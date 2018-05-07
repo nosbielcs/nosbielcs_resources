@@ -1,2 +1,2 @@
-# nosbielcs_resources
-Academic and Professional Resourses
+# Nosbielcs Resources
+Academic and Professional Resourses.
