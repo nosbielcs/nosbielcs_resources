@@ -1,7 +1,7 @@
 .gitignore
 .Rhistory
 declaracoes/
-projeto_tex/
+tex_projeto/
+tex_tese/
 referencias/
-scripts/
 temp/
