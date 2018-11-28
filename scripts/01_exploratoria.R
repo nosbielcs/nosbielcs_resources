@@ -23,6 +23,31 @@ fatores <- dados %>%
   select(starts_with('fator_')) %>%
   mutate_all(~ if_else(.x == 'SIM', 1, 0))
 
+#Verificando integridade do dataset fatores
+colSums(fatores)
+is.na(fatores) #observar se existem dados omissos
+sum(is.na(fatores)) #espera-se que seja zero
+sum(colSums(fatores)) == sum(dados$quantidade_fatores_contribuintes) #espera-se que seja TRUE
+sum(colSums(fatores)) - sum(dados$quantidade_fatores_contribuintes) #espera-se que seja zero
+str(fatores)
+
+#Calculando matriz de correlação
+require(psych)
+fatores_cor <- polychoric(fatores)
+
+#Exibindo graficamente as correlações
+require(corrplot)
+corrplot(fatores_cor$rho, method = "circle")
+corrplot(fatores_cor$rho, method = "square")
+corrplot(fatores_cor$rho, method = "color")
+corrplot(fatores_cor$rho, method = "number")
+corrplot(fatores_cor$rho, method = "pie")
+corrplot(fatores_cor$rho, method = "shade")
+
+#Análise Fatorial
+eigen(fatores_cor$rho)$values
+scree(fatores_cor$rho)
+pca(fatores_cor$rho, covar = TRUE, nfactors = 15)
 
 
 #Total de Acidentes
