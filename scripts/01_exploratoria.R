@@ -1,6 +1,8 @@
 #Análise
 
 #Carregando Pacotes
+if(!require(devtools)) install.packages("devtools")
+if(!require(tidyverse)) install.packages("tidyverse")
 library(tidyverse)
 
 #Leitura dos Dados
